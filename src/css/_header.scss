@@ -1,0 +1,200 @@
+header {
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-container {
+  display: flex;
+  width: 75%;
+  h1 {
+    font-size: 3rem;
+    color: #f58025;
+    font-weight: bold;
+    text-shadow: 1px 1px #d16e22;
+    flex: 1;
+    animation: opacity 1s ease-in-out;
+    display: none;
+  }
+  #logo {
+    flex: 1;
+    font-size: 3rem;
+    color: #f58025;
+  }
+
+  .nav-links {
+    display: flex;
+    flex: 2;
+    align-items: center;
+    justify-content: space-evenly;
+    a {
+      color: #ffac6d;
+      font-size: 2rem;
+    }
+    a:hover {
+      color: #f58025;
+    }
+  }
+}
+
+// burger style
+.burger {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  cursor: pointer;
+}
+
+.burger div {
+  background-color: #f58025;
+  height: 2px;
+  width: 20px;
+  margin: 5px;
+  transition: all 0.2s ease-in-out;
+}
+
+// underline hover effect
+a.hover-underline {
+  position: relative;
+}
+
+a.hover-underline:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  top: 0;
+  left: 0;
+  background-color: #f58025;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+a.hover-underline:hover:before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+// svg stroke animation
+#logo {
+  animation: fill 0.5s ease forwards 2.5s;
+}
+
+#logo path:nth-child(1) {
+  stroke-dasharray: 146;
+  stroke-dashoffset: 146;
+  animation: line-anim 2s ease forwards;
+}
+#logo path:nth-child(2) {
+  stroke-dasharray: 62;
+  stroke-dashoffset: 62;
+  animation: line-anim 2s ease forwards 0.2s;
+}
+#logo path:nth-child(3) {
+  stroke-dasharray: 108;
+  stroke-dashoffset: 108;
+  animation: line-anim 2s ease forwards 0.4s;
+}
+#logo path:nth-child(4) {
+  stroke-dasharray: 121;
+  stroke-dashoffset: 121;
+  animation: line-anim 2s ease forwards 0.6s;
+}
+#logo path:nth-child(5) {
+  stroke-dasharray: 105;
+  stroke-dashoffset: 105;
+  animation: line-anim 2s ease forwards 0.8s;
+}
+#logo path:nth-child(6) {
+  stroke-dasharray: 146;
+  stroke-dashoffset: 146;
+  animation: line-anim 2s ease forwards 1s;
+}
+#logo path:nth-child(7) {
+  stroke-dasharray: 105;
+  stroke-dashoffset: 105;
+  animation: line-anim 2s ease forwards 1.2s;
+}
+#logo path:nth-child(8) {
+  stroke-dasharray: 108;
+  stroke-dashoffset: 108;
+  animation: line-anim 2s ease forwards 1.4s;
+}
+#logo path:nth-child(9) {
+  stroke-dasharray: 134;
+  stroke-dashoffset: 134;
+  animation: line-anim 2s ease forwards 1.6s;
+}
+
+// keyframes
+@keyframes line-anim {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fill {
+  from {
+    fill: transparent;
+  }
+  to {
+    fill: #f58025;
+  }
+}
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// responsive media query (768px)
+@media only screen and (max-width: 768px) {
+  .burger {
+    display: block;
+  }
+  .line1-active {
+    transform-origin: top left;
+    transform: rotate(45deg);
+  }
+  .line2-active {
+    opacity: 0;
+  }
+  .line3-active {
+    transform-origin: bottom left;
+    transform: rotate(-45deg);
+  }
+  .nav-container {
+    h1 {
+      display: block;
+      font-size: 3rem;
+    }
+    #logo {
+      display: none;
+    }
+    .nav-links {
+      a {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .nav-links {
+    position: absolute;
+    flex-direction: column;
+    top: 8vh;
+    left: 0;
+    height: 0vh;
+    width: 100%;
+    opacity: 0;
+    transition: height 0.5s, opacity 0.3s ease-out;
+  }
+  .nav-links-active {
+    height: 15vh;
+    opacity: 1;
+  }
+}
